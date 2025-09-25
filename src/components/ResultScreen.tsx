@@ -10,7 +10,7 @@ interface Track {
   artist: string;
   bpm: number;
   key: string;
-  spotifyUrl: string;
+  youtubeUrl: string;
 }
 
 interface ResultScreenProps {
@@ -113,7 +113,7 @@ export const ResultScreen = ({
   };
 
   const handlePlaySong = () => {
-    window.open(winningTrack.spotifyUrl, '_blank');
+    window.open(winningTrack.youtubeUrl, '_blank');
   };
 
   return (
@@ -182,7 +182,7 @@ export const ResultScreen = ({
           className="border-accent text-accent hover:bg-accent hover:text-accent-foreground py-4 text-lg"
           size="lg"
         >
-          🎵 Play Song
+          🎵 Play on YouTube
         </Button>
       </div>
 

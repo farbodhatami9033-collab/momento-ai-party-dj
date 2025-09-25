@@ -13,7 +13,7 @@ interface Track {
   artist: string;
   bpm: number;
   key: string;
-  spotifyUrl: string;
+  youtubeUrl: string;
 }
 
 interface TrackVotingProps {
