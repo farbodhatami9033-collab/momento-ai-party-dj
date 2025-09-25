@@ -3,146 +3,146 @@
     {
       "id": "techno_1",
       "vibe": "Techno", 
-      "title": "Acid Storm",
-      "artist": "Digital Pulse",
-      "bpm": 130,
-      "key": "A minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Acid+Storm+Digital+Pulse"
+      "title": "Selected",
+      "artist": "Charlotte de Witte",
+      "bpm": 132,
+      "key": "F minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Charlotte+de+Witte+Selected"
     },
     {
       "id": "techno_2",
       "vibe": "Techno",
-      "title": "Neon Nights", 
-      "artist": "Cyber Bass",
-      "bpm": 125,
-      "key": "C major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Neon+Nights+Cyber+Bass"
+      "title": "In Silence", 
+      "artist": "Amelie Lens",
+      "bpm": 130,
+      "key": "A minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Amelie+Lens+In+Silence"
     },
     {
       "id": "techno_3",
       "vibe": "Techno",
-      "title": "Electric Dreams",
-      "artist": "Synth Machine", 
+      "title": "Your Mind",
+      "artist": "Adam Beyer feat. Bart Skils", 
       "bpm": 128,
-      "key": "F# minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Electric+Dreams+Synth+Machine"
+      "key": "D minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Adam+Beyer+Bart+Skils+Your+Mind"
     },
     {
       "id": "techno_4",
       "vibe": "Techno",
-      "title": "Dark Energy",
-      "artist": "Bass Hunter",
-      "bpm": 132,
-      "key": "D minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Dark+Energy+Bass+Hunter"
+      "title": "Gravity",
+      "artist": "Boris Brejcha",
+      "bpm": 125,
+      "key": "G major",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Boris+Brejcha+Gravity"
     },
     {
       "id": "hiphop_1",
       "vibe": "Hip-Hop",
-      "title": "Street Vibes",
-      "artist": "MC Flow",
-      "bpm": 95,
-      "key": "G minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Street+Vibes+MC+Flow"
+      "title": "God's Plan",
+      "artist": "Drake",
+      "bpm": 77,
+      "key": "B major",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Drake+God%27s+Plan"
     },
     {
       "id": "hiphop_2", 
       "vibe": "Hip-Hop",
-      "title": "City Lights",
-      "artist": "Urban Legend",
-      "bpm": 88,
-      "key": "B♭ major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=City+Lights+Urban+Legend"
+      "title": "Lose Yourself",
+      "artist": "Eminem",
+      "bpm": 86,
+      "key": "F# minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Eminem+Lose+Yourself"
     },
     {
       "id": "hiphop_3",
       "vibe": "Hip-Hop", 
-      "title": "Midnight Cipher",
-      "artist": "Rhythm Kings",
-      "bpm": 92,
-      "key": "E minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Midnight+Cipher+Rhythm+Kings"
+      "title": "SICKO MODE",
+      "artist": "Travis Scott",
+      "bpm": 155,
+      "key": "C# minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Travis+Scott+SICKO+MODE"
     },
     {
       "id": "hiphop_4",
       "vibe": "Hip-Hop",
-      "title": "Golden Hour",
-      "artist": "Smooth Operator", 
-      "bpm": 85,
-      "key": "A major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Golden+Hour+Smooth+Operator"
+      "title": "HUMBLE.",
+      "artist": "Kendrick Lamar", 
+      "bpm": 150,
+      "key": "F# minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Kendrick+Lamar+HUMBLE"
     },
     {
       "id": "house_1",
       "vibe": "House",
-      "title": "Sunrise Sessions",
-      "artist": "Deep Groove",
-      "bpm": 120,
-      "key": "C major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Sunrise+Sessions+Deep+Groove"
+      "title": "How Deep Is Your Love",
+      "artist": "Calvin Harris feat. Disciples",
+      "bpm": 122,
+      "key": "F major",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Calvin+Harris+How+Deep+Is+Your+Love+Disciples"
     },
     {
       "id": "house_2",
       "vibe": "House",
-      "title": "Feel the Beat",
-      "artist": "Disco Funk",
-      "bpm": 122,
-      "key": "G major", 
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Feel+the+Beat+Disco+Funk"
+      "title": "Latch",
+      "artist": "Disclosure feat. Sam Smith",
+      "bpm": 120,
+      "key": "F minor", 
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Disclosure+Latch+Sam+Smith"
     },
     {
       "id": "house_3",
       "vibe": "House",
-      "title": "Dance Floor Heat",
-      "artist": "Groove Machine",
-      "bpm": 125,
-      "key": "D major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Dance+Floor+Heat+Groove+Machine"
+      "title": "I'm Good (Blue)",
+      "artist": "David Guetta & Bebe Rexha",
+      "bpm": 128,
+      "key": "G minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=David+Guetta+I%27m+Good+Blue+Bebe+Rexha"
     },
     {
       "id": "house_4",
       "vibe": "House", 
-      "title": "Soul Revolution",
-      "artist": "Vocal Harmony",
-      "bpm": 118,
-      "key": "F major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Soul+Revolution+Vocal+Harmony"
+      "title": "Don't You Worry Child",
+      "artist": "Swedish House Mafia",
+      "bpm": 129,
+      "key": "C major",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Swedish+House+Mafia+Don%27t+You+Worry+Child"
     },
     {
       "id": "pop_1",
       "vibe": "Pop",
-      "title": "Electric Love",
-      "artist": "Synth Pop",
-      "bpm": 110,
-      "key": "C major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Electric+Love+Synth+Pop"
+      "title": "Don't Start Now",
+      "artist": "Dua Lipa",
+      "bpm": 124,
+      "key": "G minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Dua+Lipa+Don%27t+Start+Now"
     },
     {
       "id": "pop_2",
       "vibe": "Pop", 
-      "title": "Neon Lights",
-      "artist": "Crystal Sound",
-      "bpm": 108,
-      "key": "A major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Neon+Lights+Crystal+Sound"
+      "title": "Blinding Lights",
+      "artist": "The Weeknd",
+      "bpm": 171,
+      "key": "F minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=The+Weeknd+Blinding+Lights"
     },
     {
       "id": "pop_3",
       "vibe": "Pop",
-      "title": "Summer Dreams",
-      "artist": "Bright Melody",
-      "bpm": 112,
-      "key": "E major", 
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Summer+Dreams+Bright+Melody"
+      "title": "Can't Stop the Feeling!",
+      "artist": "Justin Timberlake",
+      "bpm": 113,
+      "key": "C major", 
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Justin+Timberlake+Can%27t+Stop+the+Feeling"
     },
     {
       "id": "pop_4",
       "vibe": "Pop",
-      "title": "Midnight Sky",
-      "artist": "Aurora Beats",
-      "bpm": 105,
-      "key": "B major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Midnight+Sky+Aurora+Beats"
+      "title": "Poker Face",
+      "artist": "Lady Gaga",
+      "bpm": 119,
+      "key": "G# minor",
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Lady+Gaga+Poker+Face"
     }
   ]
 }
