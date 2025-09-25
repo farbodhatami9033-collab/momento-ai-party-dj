@@ -7,7 +7,7 @@
       "artist": "Digital Pulse",
       "bpm": 130,
       "key": "A minor",
-      "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Acid+Storm+Digital+Pulse"
     },
     {
       "id": "techno_2",
@@ -16,7 +16,7 @@
       "artist": "Cyber Bass",
       "bpm": 125,
       "key": "C major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=9bZkp7q19f0"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Neon+Nights+Cyber+Bass"
     },
     {
       "id": "techno_3",
@@ -25,7 +25,7 @@
       "artist": "Synth Machine", 
       "bpm": 128,
       "key": "F# minor",
-      "youtubeUrl": "https://www.youtube.com/watch?v=M7lc1UVf-VE"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Electric+Dreams+Synth+Machine"
     },
     {
       "id": "techno_4",
@@ -34,7 +34,7 @@
       "artist": "Bass Hunter",
       "bpm": 132,
       "key": "D minor",
-      "youtubeUrl": "https://www.youtube.com/watch?v=ZXsQAXx_ao0"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Dark+Energy+Bass+Hunter"
     },
     {
       "id": "hiphop_1",
@@ -43,7 +43,7 @@
       "artist": "MC Flow",
       "bpm": 95,
       "key": "G minor",
-      "youtubeUrl": "https://www.youtube.com/watch?v=hTWKbfoikeg"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Street+Vibes+MC+Flow"
     },
     {
       "id": "hiphop_2", 
@@ -52,7 +52,7 @@
       "artist": "Urban Legend",
       "bpm": 88,
       "key": "B♭ major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=YQHsXMglC9A"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=City+Lights+Urban+Legend"
     },
     {
       "id": "hiphop_3",
@@ -61,7 +61,7 @@
       "artist": "Rhythm Kings",
       "bpm": 92,
       "key": "E minor",
-      "youtubeUrl": "https://www.youtube.com/watch?v=kJQP7kiw5Fk"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Midnight+Cipher+Rhythm+Kings"
     },
     {
       "id": "hiphop_4",
@@ -70,7 +70,7 @@
       "artist": "Smooth Operator", 
       "bpm": 85,
       "key": "A major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=L_jWHffIx5E"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Golden+Hour+Smooth+Operator"
     },
     {
       "id": "house_1",
@@ -79,7 +79,7 @@
       "artist": "Deep Groove",
       "bpm": 120,
       "key": "C major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=_ovdm2yX4MA"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Sunrise+Sessions+Deep+Groove"
     },
     {
       "id": "house_2",
@@ -88,7 +88,7 @@
       "artist": "Disco Funk",
       "bpm": 122,
       "key": "G major", 
-      "youtubeUrl": "https://www.youtube.com/watch?v=fJ9rUzIMcZQ"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Feel+the+Beat+Disco+Funk"
     },
     {
       "id": "house_3",
@@ -97,7 +97,7 @@
       "artist": "Groove Machine",
       "bpm": 125,
       "key": "D major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=BsOUG_XH25E"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Dance+Floor+Heat+Groove+Machine"
     },
     {
       "id": "house_4",
@@ -106,7 +106,7 @@
       "artist": "Vocal Harmony",
       "bpm": 118,
       "key": "F major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=QH2-TGUlwu4"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Soul+Revolution+Vocal+Harmony"
     },
     {
       "id": "pop_1",
@@ -115,7 +115,7 @@
       "artist": "Synth Pop",
       "bpm": 110,
       "key": "C major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=kdemFfbS5H0"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Electric+Love+Synth+Pop"
     },
     {
       "id": "pop_2",
@@ -124,7 +124,7 @@
       "artist": "Crystal Sound",
       "bpm": 108,
       "key": "A major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=gAh9NRGNhUU"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Neon+Lights+Crystal+Sound"
     },
     {
       "id": "pop_3",
@@ -133,7 +133,7 @@
       "artist": "Bright Melody",
       "bpm": 112,
       "key": "E major", 
-      "youtubeUrl": "https://www.youtube.com/watch?v=JGwWNGJdvx8"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Summer+Dreams+Bright+Melody"
     },
     {
       "id": "pop_4",
@@ -142,7 +142,7 @@
       "artist": "Aurora Beats",
       "bpm": 105,
       "key": "B major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=2vjPBrBU-TM"
+      "youtubeUrl": "https://www.youtube.com/results?search_query=Midnight+Sky+Aurora+Beats"
     }
   ]
 }
