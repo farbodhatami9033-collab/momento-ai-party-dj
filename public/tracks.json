@@ -1,0 +1,148 @@
+{
+  "tracks": [
+    {
+      "id": "techno_1",
+      "vibe": "Techno", 
+      "title": "Acid Storm",
+      "artist": "Digital Pulse",
+      "bpm": 130,
+      "key": "A minor",
+      "spotifyUrl": "https://open.spotify.com/track/example1"
+    },
+    {
+      "id": "techno_2",
+      "vibe": "Techno",
+      "title": "Neon Nights", 
+      "artist": "Cyber Bass",
+      "bpm": 125,
+      "key": "C major",
+      "spotifyUrl": "https://open.spotify.com/track/example2"
+    },
+    {
+      "id": "techno_3",
+      "vibe": "Techno",
+      "title": "Electric Dreams",
+      "artist": "Synth Machine", 
+      "bpm": 128,
+      "key": "F# minor",
+      "spotifyUrl": "https://open.spotify.com/track/example3"
+    },
+    {
+      "id": "techno_4",
+      "vibe": "Techno",
+      "title": "Dark Energy",
+      "artist": "Bass Hunter",
+      "bpm": 132,
+      "key": "D minor",
+      "spotifyUrl": "https://open.spotify.com/track/example4"
+    },
+    {
+      "id": "hiphop_1",
+      "vibe": "Hip-Hop",
+      "title": "Street Vibes",
+      "artist": "MC Flow",
+      "bpm": 95,
+      "key": "G minor",
+      "spotifyUrl": "https://open.spotify.com/track/example5"
+    },
+    {
+      "id": "hiphop_2", 
+      "vibe": "Hip-Hop",
+      "title": "City Lights",
+      "artist": "Urban Legend",
+      "bpm": 88,
+      "key": "B♭ major",
+      "spotifyUrl": "https://open.spotify.com/track/example6"
+    },
+    {
+      "id": "hiphop_3",
+      "vibe": "Hip-Hop", 
+      "title": "Midnight Cipher",
+      "artist": "Rhythm Kings",
+      "bpm": 92,
+      "key": "E minor",
+      "spotifyUrl": "https://open.spotify.com/track/example7"
+    },
+    {
+      "id": "hiphop_4",
+      "vibe": "Hip-Hop",
+      "title": "Golden Hour",
+      "artist": "Smooth Operator", 
+      "bpm": 85,
+      "key": "A major",
+      "spotifyUrl": "https://open.spotify.com/track/example8"
+    },
+    {
+      "id": "house_1",
+      "vibe": "House",
+      "title": "Sunrise Sessions",
+      "artist": "Deep Groove",
+      "bpm": 120,
+      "key": "C major",
+      "spotifyUrl": "https://open.spotify.com/track/example9"
+    },
+    {
+      "id": "house_2",
+      "vibe": "House",
+      "title": "Feel the Beat",
+      "artist": "Disco Funk",
+      "bpm": 122,
+      "key": "G major", 
+      "spotifyUrl": "https://open.spotify.com/track/example10"
+    },
+    {
+      "id": "house_3",
+      "vibe": "House",
+      "title": "Dance Floor Heat",
+      "artist": "Groove Machine",
+      "bpm": 125,
+      "key": "D major",
+      "spotifyUrl": "https://open.spotify.com/track/example11"
+    },
+    {
+      "id": "house_4",
+      "vibe": "House", 
+      "title": "Soul Revolution",
+      "artist": "Vocal Harmony",
+      "bpm": 118,
+      "key": "F major",
+      "spotifyUrl": "https://open.spotify.com/track/example12"
+    },
+    {
+      "id": "pop_1",
+      "vibe": "Pop",
+      "title": "Electric Love",
+      "artist": "Synth Pop",
+      "bpm": 110,
+      "key": "C major",
+      "spotifyUrl": "https://open.spotify.com/track/example13"
+    },
+    {
+      "id": "pop_2",
+      "vibe": "Pop", 
+      "title": "Neon Lights",
+      "artist": "Crystal Sound",
+      "bpm": 108,
+      "key": "A major",
+      "spotifyUrl": "https://open.spotify.com/track/example14"
+    },
+    {
+      "id": "pop_3",
+      "vibe": "Pop",
+      "title": "Summer Dreams",
+      "artist": "Bright Melody",
+      "bpm": 112,
+      "key": "E major", 
+      "spotifyUrl": "https://open.spotify.com/track/example15"
+    },
+    {
+      "id": "pop_4",
+      "vibe": "Pop",
+      "title": "Midnight Sky",
+      "artist": "Aurora Beats",
+      "bpm": 105,
+      "key": "B major",
+      "spotifyUrl": "https://open.spotify.com/track/example16"
+    }
+  ]
+}
