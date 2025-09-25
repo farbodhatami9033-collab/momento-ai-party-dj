@@ -7,6 +7,7 @@ import { ResultScreen } from '@/components/ResultScreen';
 import { SessionRecap } from '@/components/SessionRecap';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
+import { supabase } from '@/integrations/supabase/client';
 
 type GamePhase = 'username' | 'vibe-vote' | 'track-vote' | 'result' | 'recap';
 
@@ -44,7 +45,15 @@ const Index = () => {
     setPhase('result');
   };
 
-  const handleNewRound = () => {
+  const handleNewRound = async () => {
+    // Clear all votes before starting new round
+    try {
+      await supabase.from('votes_vibe').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+      await supabase.from('votes_track').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+    } catch (error) {
+      console.error('Error clearing votes:', error);
+    }
+    
     setPhase('vibe-vote');
   };
 

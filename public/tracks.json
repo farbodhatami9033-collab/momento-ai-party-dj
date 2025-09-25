@@ -7,7 +7,7 @@
       "artist": "Charlotte de Witte",
       "bpm": 132,
       "key": "F minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Charlotte+de+Witte+Selected"
+      "youtubeUrl": "https://www.youtube.com/watch?v=kdemFfbS5H0"
     },
     {
       "id": "techno_2",
@@ -16,7 +16,7 @@
       "artist": "Amelie Lens",
       "bpm": 130,
       "key": "A minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Amelie+Lens+In+Silence"
+      "youtubeUrl": "https://www.youtube.com/watch?v=hiP14ED28CA"
     },
     {
       "id": "techno_3",
@@ -25,7 +25,7 @@
       "artist": "Adam Beyer feat. Bart Skils", 
       "bpm": 128,
       "key": "D minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Adam+Beyer+Bart+Skils+Your+Mind"
+      "youtubeUrl": "https://www.youtube.com/watch?v=ygGw_zo0ONs"
     },
     {
       "id": "techno_4",
@@ -34,7 +34,7 @@
       "artist": "Boris Brejcha",
       "bpm": 125,
       "key": "G major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Boris+Brejcha+Gravity"
+      "youtubeUrl": "https://www.youtube.com/watch?v=QcZKDSk4wP4"
     },
     {
       "id": "hiphop_1",
@@ -43,7 +43,7 @@
       "artist": "Drake",
       "bpm": 77,
       "key": "B major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Drake+God%27s+Plan"
+      "youtubeUrl": "https://www.youtube.com/watch?v=xpVfcZ0ZcFM"
     },
     {
       "id": "hiphop_2", 
@@ -52,7 +52,7 @@
       "artist": "Eminem",
       "bpm": 86,
       "key": "F# minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Eminem+Lose+Yourself"
+      "youtubeUrl": "https://www.youtube.com/watch?v=_Yhyp-_hX2s"
     },
     {
       "id": "hiphop_3",
@@ -61,7 +61,7 @@
       "artist": "Travis Scott",
       "bpm": 155,
       "key": "C# minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Travis+Scott+SICKO+MODE"
+      "youtubeUrl": "https://www.youtube.com/watch?v=6ONRf7h3Mdk"
     },
     {
       "id": "hiphop_4",
@@ -70,7 +70,7 @@
       "artist": "Kendrick Lamar", 
       "bpm": 150,
       "key": "F# minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Kendrick+Lamar+HUMBLE"
+      "youtubeUrl": "https://www.youtube.com/watch?v=tvTRZJ-4EyI"
     },
     {
       "id": "house_1",
@@ -79,7 +79,7 @@
       "artist": "Calvin Harris feat. Disciples",
       "bpm": 122,
       "key": "F major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Calvin+Harris+How+Deep+Is+Your+Love+Disciples"
+      "youtubeUrl": "https://www.youtube.com/watch?v=EgqUJOudrcM"
     },
     {
       "id": "house_2",
@@ -88,7 +88,7 @@
       "artist": "Disclosure feat. Sam Smith",
       "bpm": 120,
       "key": "F minor", 
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Disclosure+Latch+Sam+Smith"
+      "youtubeUrl": "https://www.youtube.com/watch?v=93ASUImTedo"
     },
     {
       "id": "house_3",
@@ -97,7 +97,7 @@
       "artist": "David Guetta & Bebe Rexha",
       "bpm": 128,
       "key": "G minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=David+Guetta+I%27m+Good+Blue+Bebe+Rexha"
+      "youtubeUrl": "https://www.youtube.com/watch?v=90RLzVUuXe4"
     },
     {
       "id": "house_4",
@@ -106,7 +106,7 @@
       "artist": "Swedish House Mafia",
       "bpm": 129,
       "key": "C major",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Swedish+House+Mafia+Don%27t+You+Worry+Child"
+      "youtubeUrl": "https://www.youtube.com/watch?v=1y6smkh6c-0"
     },
     {
       "id": "pop_1",
@@ -115,7 +115,7 @@
       "artist": "Dua Lipa",
       "bpm": 124,
       "key": "G minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Dua+Lipa+Don%27t+Start+Now"
+      "youtubeUrl": "https://www.youtube.com/watch?v=oygrmJFKYZY"
     },
     {
       "id": "pop_2",
@@ -124,7 +124,7 @@
       "artist": "The Weeknd",
       "bpm": 171,
       "key": "F minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=The+Weeknd+Blinding+Lights"
+      "youtubeUrl": "https://www.youtube.com/watch?v=4NRXx6U8ABQ"
     },
     {
       "id": "pop_3",
@@ -133,7 +133,7 @@
       "artist": "Justin Timberlake",
       "bpm": 113,
       "key": "C major", 
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Justin+Timberlake+Can%27t+Stop+the+Feeling"
+      "youtubeUrl": "https://www.youtube.com/watch?v=ru0K8uYEZWw"
     },
     {
       "id": "pop_4",
@@ -142,7 +142,7 @@
       "artist": "Lady Gaga",
       "bpm": 119,
       "key": "G# minor",
-      "youtubeUrl": "https://www.youtube.com/results?search_query=Lady+Gaga+Poker+Face"
+      "youtubeUrl": "https://www.youtube.com/watch?v=bESGLojNYSo"
     }
   ]
 }
