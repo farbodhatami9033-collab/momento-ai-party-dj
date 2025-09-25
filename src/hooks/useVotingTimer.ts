@@ -18,24 +18,32 @@ export const useVotingTimer = (initialTime: number, onComplete: () => void) => {
     setTimeLeft(initialTime);
   }, [initialTime]);
 
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
+useEffect(() => {
+  let intervalId: NodeJS.Timeout | undefined;
 
-    if (isActive && timeLeft > 0) {
-      intervalId = setInterval(() => {
-        setTimeLeft((time) => {
-          if (time <= 1) {
-            setIsActive(false);
-            onComplete();
-            return 0;
-          }
-          return time - 1;
-        });
-      }, 1000);
-    }
+  if (isActive && timeLeft > 0) {
+    intervalId = setInterval(() => {
+      setTimeLeft((time) => {
+        if (time <= 1) {
+          setIsActive(false);
+          return 0;
+        }
+        return time - 1;
+      });
+    }, 1000);
+  }
 
-    return () => clearInterval(intervalId);
-  }, [isActive, timeLeft, onComplete]);
+  return () => {
+    if (intervalId) clearInterval(intervalId);
+  };
+}, [isActive, timeLeft]);
+
+// Call onComplete after render when timer hits 0 to avoid render-phase updates
+useEffect(() => {
+  if (!isActive && timeLeft === 0) {
+    onComplete();
+  }
+}, [isActive, timeLeft, onComplete]);
 
   return {
     timeLeft,

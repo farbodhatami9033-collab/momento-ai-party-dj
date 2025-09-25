@@ -2,30 +2,30 @@
   "tracks": [
     {
       "id": "techno_1",
-      "vibe": "Techno", 
+      "vibe": "Techno",
       "title": "Selected",
       "artist": "Charlotte de Witte",
       "bpm": 132,
       "key": "F minor",
-      "https://youtu.be/SnnwwWY4uMU?si=H8EuY3Uj1jZrgHHj"
+      "youtubeUrl": "https://www.youtube.com/watch?v=SnnwwWY4uMU"
     },
     {
       "id": "techno_2",
       "vibe": "Techno",
-      "title": "In Silence", 
+      "title": "In Silence",
       "artist": "Amelie Lens",
       "bpm": 130,
       "key": "A minor",
-      "youtubeUrl": "https://www.youtube.com/watch?v=hiP14ED28CA"
+      "youtubeUrl": "https://www.youtube.com/watch?v=2D1TUCIKXXI"
     },
     {
       "id": "techno_3",
       "vibe": "Techno",
       "title": "Your Mind",
-      "artist": "Adam Beyer feat. Bart Skils", 
+      "artist": "Adam Beyer feat. Bart Skils",
       "bpm": 128,
       "key": "D minor",
-      "youtubeUrl": "https://www.youtube.com/watch?v=ygGw_zo0ONs"
+      "youtubeUrl": "https://www.youtube.com/watch?v=aU6z-pPEmY0"
     },
     {
       "id": "techno_4",
@@ -34,7 +34,7 @@
       "artist": "Boris Brejcha",
       "bpm": 125,
       "key": "G major",
-      "youtubeUrl": "https://www.youtube.com/watch?v=QcZKDSk4wP4"
+      "youtubeUrl": "https://www.youtube.com/watch?v=iSsG5DuOlQ"
     },
     {
       "id": "hiphop_1",
@@ -46,7 +46,7 @@
       "youtubeUrl": "https://www.youtube.com/watch?v=xpVfcZ0ZcFM"
     },
     {
-      "id": "hiphop_2", 
+      "id": "hiphop_2",
       "vibe": "Hip-Hop",
       "title": "Lose Yourself",
       "artist": "Eminem",
@@ -56,7 +56,7 @@
     },
     {
       "id": "hiphop_3",
-      "vibe": "Hip-Hop", 
+      "vibe": "Hip-Hop",
       "title": "SICKO MODE",
       "artist": "Travis Scott",
       "bpm": 155,
@@ -67,7 +67,7 @@
       "id": "hiphop_4",
       "vibe": "Hip-Hop",
       "title": "HUMBLE.",
-      "artist": "Kendrick Lamar", 
+      "artist": "Kendrick Lamar",
       "bpm": 150,
       "key": "F# minor",
       "youtubeUrl": "https://www.youtube.com/watch?v=tvTRZJ-4EyI"
@@ -87,7 +87,7 @@
       "title": "Latch",
       "artist": "Disclosure feat. Sam Smith",
       "bpm": 120,
-      "key": "F minor", 
+      "key": "F minor",
       "youtubeUrl": "https://www.youtube.com/watch?v=93ASUImTedo"
     },
     {
@@ -101,7 +101,7 @@
     },
     {
       "id": "house_4",
-      "vibe": "House", 
+      "vibe": "House",
       "title": "Don't You Worry Child",
       "artist": "Swedish House Mafia",
       "bpm": 129,
@@ -119,7 +119,7 @@
     },
     {
       "id": "pop_2",
-      "vibe": "Pop", 
+      "vibe": "Pop",
       "title": "Blinding Lights",
       "artist": "The Weeknd",
       "bpm": 171,
@@ -132,7 +132,7 @@
       "title": "Can't Stop the Feeling!",
       "artist": "Justin Timberlake",
       "bpm": 113,
-      "key": "C major", 
+      "key": "C major",
       "youtubeUrl": "https://www.youtube.com/watch?v=ru0K8uYEZWw"
     },
     {

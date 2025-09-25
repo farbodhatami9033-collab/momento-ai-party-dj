@@ -48,8 +48,10 @@ const Index = () => {
   const handleNewRound = async () => {
     // Clear all votes before starting new round
     try {
-      await supabase.from('votes_vibe').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-      await supabase.from('votes_track').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+      const { error } = await supabase.functions.invoke('clear-votes', { body: {} });
+      if (error) {
+        console.error('Error clearing votes:', error);
+      }
     } catch (error) {
       console.error('Error clearing votes:', error);
     }
