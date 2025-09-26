@@ -7,8 +7,8 @@ const corsHeaders = {
 };
 
 interface RecapRequest {
-  vibePct: Record<string, number>;
-  top3: Array<{ title: string; artist: string; votes: number }>;
+  vibePct: Array<{ v: string; pct: number }>;
+  top3: Array<{ title: string; artist: string }>;
 }
 
 serve(async (req) => {
@@ -21,28 +21,17 @@ serve(async (req) => {
 
     console.log('Generating recap for:', { vibePct, top3 });
 
-    const vibeStats = Object.entries(vibePct)
-      .map(([vibe, pct]) => `${vibe}: ${pct}%`)
-      .join(', ');
+    const vibeStats = vibePct
+      .map(({ v, pct }) => `${v} ${pct}%`)
+      .join(' • ');
 
     const topTracks = top3
-      .map((track, i) => `${i+1}. "${track.title}" by ${track.artist} (${track.votes} votes)`)
-      .join('\n');
+      .map((track, i) => `${i+1}. "${track.title}" by ${track.artist}`)
+      .join(', ');
 
-    const prompt = `You're an AI party DJ creating a "Momento Wrapped" session recap. 
+    const prompt = `You're a festival recap DJ. The crowd's vibe breakdown: ${vibeStats}. Top tracks: ${topTracks}. 
 
-The crowd's vibe breakdown was: ${vibeStats}
-
-Top tracks:
-${topTracks}
-
-Create a fun, personalized recap message (max 50 words) that:
-- Celebrates the diversity/dominance of genres
-- Highlights the crowd's energy 
-- Makes them feel like they were part of something special
-- Uses festival/party language
-
-Keep it energetic and memorable!`;
+Generate exactly one lively recap sentence (≤22 words, no emojis) celebrating the diversity/energy and making them feel special.`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -52,8 +41,9 @@ Keep it energetic and memorable!`;
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-3-5-haiku-20241022',
-        max_tokens: 100,
+        model: 'claude-3-5-haiku-latest',
+        max_tokens: 60,
+        temperature: 0.6,
         messages: [{
           role: 'user',
           content: prompt
@@ -79,7 +69,7 @@ Keep it energetic and memorable!`;
     console.error('Error in recap function:', error);
     return new Response(JSON.stringify({ 
       error: String(error),
-      recap: "What a session! The crowd brought incredible energy and made every vote count. This is what music democracy looks like! 🎉"
+      recap: "What a session! The crowd brought incredible energy and made every vote count. This is what music democracy looks like!"
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

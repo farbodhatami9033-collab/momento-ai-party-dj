@@ -13,7 +13,11 @@ interface HypeRequest {
   vibe: string;
   bpm: number;
   key: string;
-  prevTrack?: string;
+  prevTrack?: {
+    song: string;
+    bpm: number;
+    key: string;
+  };
 }
 
 serve(async (req) => {
@@ -26,17 +30,19 @@ serve(async (req) => {
 
     console.log('Generating hype for:', { song, artist, percent, vibe });
 
-    const prompt = `You're an AI party DJ host. The crowd just voted and "${song}" by ${artist} won with ${percent}% of votes in the ${vibe} category. 
+    const prevTrackText = prevTrack ? `previous: "${prevTrack.song}" (${prevTrack.bpm} BPM, ${prevTrack.key})` : 'first track of session';
+    
+    const prompt = `You're an expert club host & DJ. The crowd voted and "${song}" by ${artist} won with ${percent}% in ${vibe}. ${prevTrackText}.
 
-Generate 2 things:
-1. HYPE: A short, energetic announcement (max 30 words) to pump up the crowd
-2. TIP: A quick DJ transition tip (max 25 words) mentioning BPM ${bpm}, key ${key}${prevTrack ? `, coming from "${prevTrack}"` : ''}
+Generate exactly 3 things:
+1. HYPE: One concise hype line (≤16 words)
+2. TIP: One DJ transition tip (≤18 words) referencing BPM/key continuity if previous track exists
+3. HOST: One fun host commentary (≤18 words) about vote % and vibe continuity
 
-Keep it fun, energetic, and festival-appropriate. Use music slang and DJ terminology.
-
-Format:
-HYPE: [your hype line]
-TIP: [your transition tip]`;
+Format exactly:
+HYPE: [line]
+TIP: [line] 
+HOST: [line]`;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -46,8 +52,9 @@ TIP: [your transition tip]`;
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-3-5-haiku-20241022',
-        max_tokens: 150,
+        model: 'claude-3-5-haiku-latest',
+        max_tokens: 80,
+        temperature: 0.6,
         messages: [{
           role: 'user',
           content: prompt
@@ -67,22 +74,24 @@ TIP: [your transition tip]`;
     // Parse the response
     const hypeMatch = content.match(/HYPE:\s*(.+)/i);
     const tipMatch = content.match(/TIP:\s*(.+)/i);
+    const hostMatch = content.match(/HOST:\s*(.+)/i);
     
     const hype = hypeMatch ? hypeMatch[1].trim() : `"${song}" takes the crown with ${percent}% of the vote! Let's GO!`;
     const tip = tipMatch ? tipMatch[1].trim() : `Smooth transition at ${bpm} BPM in ${key} - keep the energy flowing!`;
+    const host = hostMatch ? hostMatch[1].trim() : `${vibe} dominates with ${percent}% - the crowd has spoken!`;
 
-    console.log('Generated hype:', hype);
-    console.log('Generated tip:', tip);
+    console.log('Generated response:', { hype, tip, host });
 
-    return new Response(JSON.stringify({ hype, tip }), {
+    return new Response(JSON.stringify({ hype, tip, host }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('Error in hype function:', error);
     return new Response(JSON.stringify({ 
       error: String(error),
-      hype: "The crowd has spoken! Let's keep this party going!",
-      tip: "Match the energy and keep the beats flowing!"
+      hype: "Make some noise for the winner!",
+      tip: "Match the energy and keep the beats flowing!",
+      host: "The crowd has chosen - let's keep this party rolling!"
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

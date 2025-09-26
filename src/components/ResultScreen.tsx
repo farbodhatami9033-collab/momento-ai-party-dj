@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
 import { toast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Track {
   id: string;
@@ -19,6 +20,7 @@ interface ResultScreenProps {
   vibe: string;
   onNewRound: () => void;
   onEndSession: () => void;
+  onShowWrapped: () => void;
 }
 
 export const ResultScreen = ({ 
@@ -26,10 +28,12 @@ export const ResultScreen = ({
   percentage, 
   vibe, 
   onNewRound, 
-  onEndSession 
+  onEndSession,
+  onShowWrapped
 }: ResultScreenProps) => {
   const [hype, setHype] = useState<string>('');
   const [tip, setTip] = useState<string>('');
+  const [host, setHost] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
 
@@ -37,7 +41,20 @@ export const ResultScreen = ({
     setIsGenerating(true);
     
     try {
-      // Generate hype and tip
+      // Get previous track info from session_state
+      const { data: sessionData } = await supabase
+        .from('session_state')
+        .select('now_playing, prev_bpm, prev_key')
+        .eq('id', 1)
+        .single();
+
+      const prevTrack = sessionData?.now_playing ? {
+        song: sessionData.now_playing,
+        bpm: sessionData.prev_bpm,
+        key: sessionData.prev_key
+      } : undefined;
+
+      // Generate hype, tip, and host commentary
       const hypeResponse = await fetch(`https://dxazqtgnqtsbmfknltmn.supabase.co/functions/v1/hype`, {
         method: 'POST',
         headers: {
@@ -49,7 +66,8 @@ export const ResultScreen = ({
           percent: percentage,
           vibe: vibe,
           bpm: winningTrack.bpm,
-          key: winningTrack.key
+          key: winningTrack.key,
+          prevTrack
         })
       });
 
@@ -57,9 +75,20 @@ export const ResultScreen = ({
         throw new Error('Failed to generate hype');
       }
 
-      const { hype: generatedHype, tip: generatedTip } = await hypeResponse.json();
+      const { hype: generatedHype, tip: generatedTip, host: generatedHost } = await hypeResponse.json();
       setHype(generatedHype);
       setTip(generatedTip);
+      setHost(generatedHost);
+
+      // Update session state with current track as previous for next round
+      await supabase
+        .from('session_state')
+        .update({
+          now_playing: `${winningTrack.title} — ${winningTrack.artist}`,
+          prev_bpm: winningTrack.bpm,
+          prev_key: winningTrack.key
+        })
+        .eq('id', 1);
 
       // Generate TTS audio
       const ttsResponse = await fetch(`https://dxazqtgnqtsbmfknltmn.supabase.co/functions/v1/tts`, {
@@ -104,9 +133,10 @@ export const ResultScreen = ({
         variant: "destructive"
       });
       
-      // Fallback hype
-      setHype(`"${winningTrack.title}" takes the crown with ${percentage}% of the vote! Let's GO!`);
+      // Fallback responses
+      setHype("Make some noise for the winner!");
       setTip(`Smooth transition at ${winningTrack.bpm} BPM in ${winningTrack.key}!`);
+      setHost(`${vibe} dominates with ${percentage}% - the crowd has spoken!`);
     } finally {
       setIsGenerating(false);
     }
@@ -150,16 +180,29 @@ export const ResultScreen = ({
         </div>
       </Card>
 
-      {hype && (
+      {(hype || tip || host) && (
         <Card className="p-6 bg-gradient-glow border-primary">
           <div className="text-center">
-            <h4 className="text-lg font-bold mb-2 text-primary">AI Hype:</h4>
-            <p className="text-xl font-medium mb-4 animate-pulse">{hype}</p>
+            <h4 className="text-lg font-bold mb-4 text-primary">AI Co-DJ</h4>
+            
+            {hype && (
+              <div className="mb-4">
+                <h5 className="text-sm font-bold mb-1 text-primary">Hype:</h5>
+                <p className="text-xl font-medium animate-pulse">{hype}</p>
+              </div>
+            )}
             
             {tip && (
-              <div>
-                <h4 className="text-sm font-bold mb-1 text-accent">DJ Tip:</h4>
+              <div className="mb-4">
+                <h5 className="text-sm font-bold mb-1 text-accent">DJ Transition Tip:</h5>
                 <p className="text-sm text-muted-foreground">{tip}</p>
+              </div>
+            )}
+
+            {host && (
+              <div>
+                <h5 className="text-sm font-bold mb-1 text-secondary">Host Commentary:</h5>
+                <p className="text-sm text-muted-foreground italic">{host}</p>
               </div>
             )}
           </div>
@@ -193,6 +236,14 @@ export const ResultScreen = ({
           className="flex-1"
         >
           New Round
+        </Button>
+        
+        <Button
+          onClick={onShowWrapped}
+          variant="outline"
+          className="flex-1 border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+        >
+          🎉 Momento Wrapped
         </Button>
         
         <Button

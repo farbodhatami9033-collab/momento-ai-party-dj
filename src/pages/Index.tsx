@@ -5,11 +5,12 @@ import { VibeVoting } from '@/components/VibeVoting';
 import { TrackVoting } from '@/components/TrackVoting';
 import { ResultScreen } from '@/components/ResultScreen';
 import { SessionRecap } from '@/components/SessionRecap';
+import { MomentoWrapped } from '@/components/MomentoWrapped';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { supabase } from '@/integrations/supabase/client';
 
-type GamePhase = 'username' | 'vibe-vote' | 'track-vote' | 'result' | 'recap';
+type GamePhase = 'username' | 'vibe-vote' | 'track-vote' | 'result' | 'wrapped' | 'recap';
 
 interface Track {
   id: string;
@@ -59,6 +60,14 @@ const Index = () => {
     setPhase('vibe-vote');
   };
 
+  const handleShowWrapped = () => {
+    setPhase('wrapped');
+  };
+
+  const handleBackFromWrapped = () => {
+    setPhase('result');
+  };
+
   const handleEndSession = () => {
     setPhase('recap');
   };
@@ -91,6 +100,16 @@ const Index = () => {
             <div className="bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/30">
               Current Vibe: {currentVibe}
             </div>
+          )}
+
+          {(phase === 'result' || phase === 'wrapped') && (
+            <Button
+              onClick={handleShowWrapped}
+              variant="outline"
+              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground px-4 py-2 text-sm"
+            >
+              🎉 Wrapped
+            </Button>
           )}
         </div>
       )}
@@ -131,7 +150,14 @@ const Index = () => {
                 vibe={currentVibe}
                 onNewRound={handleNewRound}
                 onEndSession={handleEndSession}
+                onShowWrapped={handleShowWrapped}
               />
+            </div>
+          )}
+
+          {phase === 'wrapped' && (
+            <div className="mt-16">
+              <MomentoWrapped onBack={handleBackFromWrapped} />
             </div>
           )}
 
