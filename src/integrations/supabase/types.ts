@@ -69,6 +69,7 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          session_id: string | null
           song_id: string
           user_id: string | null
           username: string
@@ -76,6 +77,7 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: string
+          session_id?: string | null
           song_id: string
           user_id?: string | null
           username: string
@@ -83,6 +85,7 @@ export type Database = {
         Update: {
           created_at?: string
           id?: string
+          session_id?: string | null
           song_id?: string
           user_id?: string | null
           username?: string
@@ -93,6 +96,7 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          session_id: string | null
           user_id: string | null
           username: string
           vibe: string
@@ -100,6 +104,7 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: string
+          session_id?: string | null
           user_id?: string | null
           username: string
           vibe: string
@@ -107,6 +112,7 @@ export type Database = {
         Update: {
           created_at?: string
           id?: string
+          session_id?: string | null
           user_id?: string | null
           username?: string
           vibe?: string
