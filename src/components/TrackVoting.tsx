@@ -8,6 +8,8 @@ import { toast } from '@/hooks/use-toast';
 
 import { User } from '@supabase/supabase-js';
 
+type LocalUser = { name: string; id: string };
+
 interface Track {
   id: string;
   vibe: string;
@@ -23,7 +25,7 @@ interface TrackVotingProps {
   vibe: string;
   onComplete: (winningTrack: Track, percentage: number) => void;
   demoMode: boolean;
-  user: User | null;
+  user: User | LocalUser | null;
 }
 
 const VOTING_TIME = 20;

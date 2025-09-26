@@ -63,27 +63,18 @@ const Auth = () => {
       const validatedName = nameSchema.parse(name);
       setLoading(true);
 
-      // Create anonymous user with display name
-      const { data, error } = await supabase.auth.signInAnonymously({
-        options: {
-          data: {
-            display_name: validatedName
-          }
-        }
+      // Store user name locally (no authentication required)
+      localStorage.setItem('momento_user_name', validatedName);
+      localStorage.setItem('momento_user_id', crypto.randomUUID());
+      
+      toast({
+        title: "Welcome to Momento!",
+        description: `Hey ${validatedName}, you're ready to vote!`,
       });
-
-      if (error) {
-        toast({
-          title: "Join failed",
-          description: error.message,
-          variant: "destructive"
-        });
-      } else {
-        toast({
-          title: "Welcome to Momento!",
-          description: `Hey ${validatedName}, you're ready to vote!`,
-        });
-      }
+      
+      // Navigate to main voting page
+      navigate('/');
+      
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({

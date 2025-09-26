@@ -9,11 +9,13 @@ import { toast } from '@/hooks/use-toast';
 
 import { User } from '@supabase/supabase-js';
 
+type LocalUser = { name: string; id: string };
+
 interface VibeVotingProps {
   username: string;
   onComplete: (winningVibe: string) => void;
   demoMode: boolean;
-  user: User | null;
+  user: User | LocalUser | null;
 }
 
 const VIBES = ['Techno', 'Hip-Hop', 'House', 'Pop'];

@@ -27,6 +27,7 @@ interface Track {
 const Index = () => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
+  const [localUser, setLocalUser] = useState<{ name: string; id: string } | null>(null);
   const [phase, setPhase] = useState<GamePhase>('username');
   const [username, setUsername] = useState('');
   const [currentVibe, setCurrentVibe] = useState('');
@@ -36,37 +37,51 @@ const Index = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Set up auth state listener
+    // Check for local user data first
+    const localUserName = localStorage.getItem('momento_user_name');
+    const localUserId = localStorage.getItem('momento_user_id');
+    
+    if (localUserName && localUserId) {
+      setLocalUser({ name: localUserName, id: localUserId });
+      setUsername(localUserName);
+      setPhase('vibe-vote'); // Skip to voting if user already joined
+    }
+    
+    // Set up auth state listener for Supabase (optional)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
-      
-      if (!session?.user && !demoMode) {
-        // Redirect to auth if not authenticated and not in demo mode
-        navigate('/auth');
-      }
     });
 
-    // Check for existing session
+    // Check for existing session (optional)
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
-      
-      if (!session?.user && !demoMode) {
-        navigate('/auth');
-      }
     });
+
+    // If no local user and not in demo mode, go to auth
+    if (!localUserName && !demoMode) {
+      navigate('/auth');
+    }
 
     return () => subscription.unsubscribe();
   }, [navigate, demoMode]);
 
   const signOut = async () => {
+    // Clear both Supabase auth and local storage
     await supabase.auth.signOut();
+    localStorage.removeItem('momento_user_name');
+    localStorage.removeItem('momento_user_id');
+    setLocalUser(null);
     navigate('/auth');
   };
 
   const handleUsernameSubmit = (name: string) => {
     setUsername(name);
+    // Store in localStorage for persistence
+    localStorage.setItem('momento_user_name', name);
+    localStorage.setItem('momento_user_id', crypto.randomUUID());
+    setLocalUser({ name, id: localStorage.getItem('momento_user_id')! });
     setPhase('vibe-vote');
   };
 
@@ -143,17 +158,17 @@ const Index = () => {
 
           {/* Auth Status */}
           <div className="flex items-center gap-2">
-            {user ? (
+            {(user || localUser) ? (
               <div className="flex items-center gap-2 bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm border border-green-500/30">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span>Authenticated</span>
+                <span>{localUser ? `Joined as ${localUser.name}` : 'Authenticated'}</span>
                 <Button 
                   onClick={signOut}
                   variant="ghost"
                   size="sm"
                   className="h-auto p-1 text-xs hover:bg-green-500/10"
                 >
-                  Sign Out
+                  {localUser ? 'Leave' : 'Sign Out'}
                 </Button>
               </div>
             ) : demoMode ? (
@@ -167,7 +182,7 @@ const Index = () => {
                 size="sm"
                 className="text-sm"
               >
-                Sign In
+                Join Game
               </Button>
             )}
           </div>
@@ -203,7 +218,7 @@ const Index = () => {
                 username={username}
                 onComplete={handleVibeComplete}
                 demoMode={demoMode}
-                user={user}
+                user={localUser || user}
               />
             </div>
           )}
@@ -215,7 +230,7 @@ const Index = () => {
                 vibe={currentVibe}
                 onComplete={handleTrackComplete}
                 demoMode={demoMode}
-                user={user}
+                user={localUser || user}
               />
             </div>
           )}
