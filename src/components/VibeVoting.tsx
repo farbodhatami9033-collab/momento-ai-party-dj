@@ -127,16 +127,23 @@ export const VibeVoting = ({ username, onComplete, demoMode, user }: VibeVotingP
     }
   };
 
-  const handleTimerComplete = () => {
+  const handleTimerComplete = async () => {
     const stats = calculateStats();
     const winningVibe = stats.reduce((max, current) => 
       current.count > max.count ? current : max
     ).vibe;
     
-    // Update session state
-    supabase.from('session_state').update({ 
-      current_vibe: winningVibe 
-    }).eq('id', 1);
+    // Securely update session state via edge function
+    try {
+      await supabase.functions.invoke('update-session', {
+        body: {
+          type: 'vibe_complete',
+          data: { current_vibe: winningVibe }
+        }
+      });
+    } catch (error) {
+      console.error('Failed to update session vibe:', error);
+    }
 
     onComplete(winningVibe);
   };

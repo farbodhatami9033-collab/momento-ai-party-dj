@@ -80,15 +80,17 @@ export const ResultScreen = ({
       setTip(generatedTip);
       setHost(generatedHost);
 
-      // Update session state with current track as previous for next round
-      await supabase
-        .from('session_state')
-        .update({
-          now_playing: `${winningTrack.title} — ${winningTrack.artist}`,
-          prev_bpm: winningTrack.bpm,
-          prev_key: winningTrack.key
-        })
-        .eq('id', 1);
+      // Securely update session state with current track via edge function
+      await supabase.functions.invoke('update-session', {
+        body: {
+          type: 'track_announce',
+          data: {
+            now_playing: `${winningTrack.title} — ${winningTrack.artist}`,
+            prev_bpm: winningTrack.bpm,
+            prev_key: winningTrack.key
+          }
+        }
+      });
 
       // Generate TTS audio
       const ttsResponse = await fetch(`https://dxazqtgnqtsbmfknltmn.supabase.co/functions/v1/tts`, {

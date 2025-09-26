@@ -8,3 +8,6 @@ verify_jwt = false
 
 [functions.recap]
 verify_jwt = false
+
+[functions.update-session]
+verify_jwt = false
