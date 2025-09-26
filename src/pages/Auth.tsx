@@ -16,6 +16,7 @@ const nameSchema = z.string()
   .max(50, { message: "Name must be less than 50 characters" });
 
 const Auth = () => {
+  // Force rebuild to clear cache
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
   const [qrCodeUrl, setQrCodeUrl] = useState<string>('');
