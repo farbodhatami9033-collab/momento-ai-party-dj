@@ -7,16 +7,19 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from './ui/button';
 import { toast } from '@/hooks/use-toast';
 
+import { User } from '@supabase/supabase-js';
+
 interface VibeVotingProps {
   username: string;
   onComplete: (winningVibe: string) => void;
   demoMode: boolean;
+  user: User | null;
 }
 
 const VIBES = ['Techno', 'Hip-Hop', 'House', 'Pop'];
 const VOTING_TIME = 15;
 
-export const VibeVoting = ({ username, onComplete, demoMode }: VibeVotingProps) => {
+export const VibeVoting = ({ username, onComplete, demoMode, user }: VibeVotingProps) => {
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
   const [hasVoted, setHasVoted] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
@@ -67,13 +70,34 @@ export const VibeVoting = ({ username, onComplete, demoMode }: VibeVotingProps) 
   const handleVote = async (vibe: string) => {
     if (hasVoted || !isStarted) return;
 
-    try {
-      const { error } = await supabase.from('votes_vibe').insert({
-        username,
-        vibe
+    // Check authentication unless in demo mode
+    if (!demoMode && !user) {
+      toast({
+        title: "Authentication required",
+        description: "Please sign in to vote",
+        variant: "destructive"
       });
+      return;
+    }
 
-      if (error) throw error;
+    try {
+      const voteData = demoMode 
+        ? { username, vibe }
+        : { username, vibe, user_id: user?.id };
+
+      const { error } = await supabase.from('votes_vibe').insert(voteData);
+
+      if (error) {
+        if (error.message.includes('duplicate key')) {
+          toast({
+            title: "Already voted",
+            description: "You can only vote once per session",
+            variant: "destructive"
+          });
+          return;
+        }
+        throw error;
+      }
 
       setSelectedVibe(vibe);
       setHasVoted(true);

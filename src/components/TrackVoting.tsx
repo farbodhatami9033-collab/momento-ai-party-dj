@@ -6,6 +6,8 @@ import { useRealtimeVotes } from '@/hooks/useRealtimeVotes';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 
+import { User } from '@supabase/supabase-js';
+
 interface Track {
   id: string;
   vibe: string;
@@ -21,11 +23,12 @@ interface TrackVotingProps {
   vibe: string;
   onComplete: (winningTrack: Track, percentage: number) => void;
   demoMode: boolean;
+  user: User | null;
 }
 
 const VOTING_TIME = 20;
 
-export const TrackVoting = ({ username, vibe, onComplete, demoMode }: TrackVotingProps) => {
+export const TrackVoting = ({ username, vibe, onComplete, demoMode, user }: TrackVotingProps) => {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
   const [hasVoted, setHasVoted] = useState(false);
@@ -106,13 +109,34 @@ export const TrackVoting = ({ username, vibe, onComplete, demoMode }: TrackVotin
   const handleVote = async (trackId: string) => {
     if (hasVoted || !isStarted) return;
 
-    try {
-      const { error } = await supabase.from('votes_track').insert({
-        username,
-        song_id: trackId
+    // Check authentication unless in demo mode
+    if (!demoMode && !user) {
+      toast({
+        title: "Authentication required",
+        description: "Please sign in to vote",
+        variant: "destructive"
       });
+      return;
+    }
 
-      if (error) throw error;
+    try {
+      const voteData = demoMode 
+        ? { username, song_id: trackId }
+        : { username, song_id: trackId, user_id: user?.id };
+
+      const { error } = await supabase.from('votes_track').insert(voteData);
+
+      if (error) {
+        if (error.message.includes('duplicate key')) {
+          toast({
+            title: "Already voted",
+            description: "You can only vote once per session",
+            variant: "destructive"
+          });
+          return;
+        }
+        throw error;
+      }
 
       setSelectedTrack(trackId);
       setHasVoted(true);

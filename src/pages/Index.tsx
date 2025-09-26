@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Toaster } from "@/components/ui/toaster";
 import { UsernameInput } from '@/components/UsernameInput';
 import { VibeVoting } from '@/components/VibeVoting';
@@ -9,6 +10,7 @@ import { MomentoWrapped } from '@/components/MomentoWrapped';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { supabase } from '@/integrations/supabase/client';
+import { User, Session } from '@supabase/supabase-js';
 
 type GamePhase = 'username' | 'vibe-vote' | 'track-vote' | 'result' | 'wrapped' | 'recap';
 
@@ -23,12 +25,45 @@ interface Track {
 }
 
 const Index = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [phase, setPhase] = useState<GamePhase>('username');
   const [username, setUsername] = useState('');
   const [currentVibe, setCurrentVibe] = useState('');
   const [winningTrack, setWinningTrack] = useState<Track | null>(null);
   const [winningPercentage, setWinningPercentage] = useState(0);
   const [demoMode, setDemoMode] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Set up auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (!session?.user && !demoMode) {
+        // Redirect to auth if not authenticated and not in demo mode
+        navigate('/auth');
+      }
+    });
+
+    // Check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (!session?.user && !demoMode) {
+        navigate('/auth');
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [navigate, demoMode]);
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    navigate('/auth');
+  };
 
   const handleUsernameSubmit = (name: string) => {
     setUsername(name);
@@ -94,7 +129,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
       <Toaster />
       
-      {/* Header with Demo Mode Toggle */}
+      {/* Header with Auth Status and Demo Mode Toggle */}
       {phase !== 'username' && (
         <div className="fixed top-4 left-4 right-4 z-10 flex justify-between items-center">
           <div className="flex items-center gap-2 bg-card/80 backdrop-blur-sm px-4 py-2 rounded-full border">
@@ -104,6 +139,37 @@ const Index = () => {
               onCheckedChange={setDemoMode}
               className="data-[state=checked]:bg-primary"
             />
+          </div>
+
+          {/* Auth Status */}
+          <div className="flex items-center gap-2">
+            {user ? (
+              <div className="flex items-center gap-2 bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm border border-green-500/30">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span>Authenticated</span>
+                <Button 
+                  onClick={signOut}
+                  variant="ghost"
+                  size="sm"
+                  className="h-auto p-1 text-xs hover:bg-green-500/10"
+                >
+                  Sign Out
+                </Button>
+              </div>
+            ) : demoMode ? (
+              <div className="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/30">
+                Demo Mode (No Auth)
+              </div>
+            ) : (
+              <Button 
+                onClick={() => navigate('/auth')}
+                variant="outline"
+                size="sm"
+                className="text-sm"
+              >
+                Sign In
+              </Button>
+            )}
           </div>
           
           {currentVibe && (
@@ -137,6 +203,7 @@ const Index = () => {
                 username={username}
                 onComplete={handleVibeComplete}
                 demoMode={demoMode}
+                user={user}
               />
             </div>
           )}
@@ -148,6 +215,7 @@ const Index = () => {
                 vibe={currentVibe}
                 onComplete={handleTrackComplete}
                 demoMode={demoMode}
+                user={user}
               />
             </div>
           )}
