@@ -67,6 +67,10 @@ const Auth = () => {
       localStorage.setItem('momento_user_name', validatedName);
       localStorage.setItem('momento_user_id', crypto.randomUUID());
       
+      // Generate session ID for anti-duplicate voting
+      const sessionId = crypto.randomUUID();
+      localStorage.setItem('momento_session_id', sessionId);
+      
       toast({
         title: "Welcome to Momento!",
         description: `Hey ${validatedName}, you're ready to vote!`,

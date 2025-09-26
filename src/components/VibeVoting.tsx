@@ -50,9 +50,11 @@ export const VibeVoting = ({ username, onComplete, demoMode, user }: VibeVotingP
 
   const simulateVote = async (vibe: string, demoUsername: string) => {
     try {
+      const sessionId = `demo_${Date.now()}_${Math.random()}`;
       await supabase.from('votes_vibe').insert({
         username: demoUsername,
-        vibe: vibe
+        vibe,
+        session_id: sessionId
       });
     } catch (error) {
       console.error('Demo vote error:', error);
@@ -72,20 +74,28 @@ export const VibeVoting = ({ username, onComplete, demoMode, user }: VibeVotingP
   const handleVote = async (vibe: string) => {
     if (hasVoted || !isStarted) return;
 
-    // Check authentication unless in demo mode
+    // For non-demo mode, require a local user (from localStorage)
     if (!demoMode && !user) {
       toast({
-        title: "Authentication required",
-        description: "Please sign in to vote",
+        title: "Please enter your name first",
+        description: "Scan QR code and enter your name to vote",
         variant: "destructive"
       });
       return;
     }
 
     try {
-      const voteData = demoMode 
-        ? { username, vibe }
-        : { username, vibe, user_id: user?.id };
+      // Generate a session ID for anti-duplicate voting
+      const sessionId = localStorage.getItem('momento_session_id') || crypto.randomUUID();
+      if (!localStorage.getItem('momento_session_id')) {
+        localStorage.setItem('momento_session_id', sessionId);
+      }
+
+      const voteData = { 
+        username, 
+        vibe,
+        session_id: sessionId
+      };
 
       const { error } = await supabase.from('votes_vibe').insert(voteData);
 

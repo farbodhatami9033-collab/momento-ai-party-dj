@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { supabase } from '@/integrations/supabase/client';
 import { User, Session } from '@supabase/supabase-js';
+import { toast } from '@/hooks/use-toast';
 
 type GamePhase = 'username' | 'vibe-vote' | 'track-vote' | 'result' | 'wrapped' | 'recap';
 
@@ -72,6 +73,7 @@ const Index = () => {
     await supabase.auth.signOut();
     localStorage.removeItem('momento_user_name');
     localStorage.removeItem('momento_user_id');
+    localStorage.removeItem('momento_session_id'); // Clear session ID too
     setLocalUser(null);
     navigate('/auth');
   };
