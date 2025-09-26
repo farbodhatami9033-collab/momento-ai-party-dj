@@ -72,7 +72,7 @@ export const MomentoWrapped = ({ onBack }: MomentoWrappedProps) => {
 
       // Fetch track details from tracks.json
       const tracksResponse = await fetch('/tracks.json');
-      const allTracks = await tracksResponse.json();
+      const { tracks: allTracks } = await tracksResponse.json();
       
       const trackDetails = Object.entries(trackCounts)
         .map(([songId, votes]) => {

@@ -72,7 +72,17 @@ const Index = () => {
     setPhase('recap');
   };
 
-  const handleNewSession = () => {
+  const handleNewSession = async () => {
+    // Clear all votes before starting new session
+    try {
+      const { error } = await supabase.functions.invoke('clear-votes', { body: {} });
+      if (error) {
+        console.error('Error clearing votes:', error);
+      }
+    } catch (error) {
+      console.error('Error clearing votes:', error);
+    }
+    
     setPhase('username');
     setUsername('');
     setCurrentVibe('');
